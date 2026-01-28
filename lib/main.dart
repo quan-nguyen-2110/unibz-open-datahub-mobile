@@ -65,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
   int selectedIndex = -1; // -1 means none selected initially
 
-  GestureDetector buildContainer(
+  GestureDetector buildActions(
     String text,
     IconData icon,
     int index,
@@ -135,6 +135,489 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                   ).bodyMedium.fontWeight,
                   fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                 ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Container buildWeatherNow() {
+    return Container(
+      decoration: BoxDecoration(
+        color: FlutterFlowTheme.of(context).primaryText,
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(20.0),
+          bottomRight: Radius.circular(20.0),
+          topLeft: Radius.circular(20.0),
+          topRight: Radius.circular(20.0),
+        ),
+        border: Border.all(color: FlutterFlowTheme.of(context).secondaryText),
+      ),
+      child: Padding(
+        padding: EdgeInsetsDirectional.fromSTEB(
+          valueOrDefault<double>(
+            MediaQuery.sizeOf(context).width < kBreakpointSmall ? 20.0 : 20.0,
+            0.0,
+          ),
+          valueOrDefault<double>(
+            MediaQuery.sizeOf(context).width < kBreakpointSmall ? 20.0 : 20.0,
+            0.0,
+          ),
+          valueOrDefault<double>(
+            MediaQuery.sizeOf(context).width < kBreakpointSmall ? 20.0 : 20.0,
+            0.0,
+          ),
+          valueOrDefault<double>(
+            MediaQuery.sizeOf(context).width < kBreakpointSmall ? 20.0 : 20.0,
+            0.0,
+          ),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                color: FlutterFlowTheme.of(context).tertiary,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(20.0),
+                  bottomRight: Radius.circular(20.0),
+                  topLeft: Radius.circular(20.0),
+                  topRight: Radius.circular(20.0),
+                ),
+              ),
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(
+                  valueOrDefault<double>(
+                    MediaQuery.sizeOf(context).width < kBreakpointSmall
+                        ? 10.0
+                        : 10.0,
+                    0.0,
+                  ),
+                  0.0,
+                  valueOrDefault<double>(
+                    MediaQuery.sizeOf(context).width < kBreakpointSmall
+                        ? 10.0
+                        : 10.0,
+                    0.0,
+                  ),
+                  0.0,
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    FaIcon(
+                      FontAwesomeIcons.umbrella,
+                      color: FlutterFlowTheme.of(context).warning,
+                      size: 24.0,
+                    ),
+                    Flexible(
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                          valueOrDefault<double>(
+                            MediaQuery.sizeOf(context).width < kBreakpointSmall
+                                ? 10.0
+                                : 10.0,
+                            0.0,
+                          ),
+                          0.0,
+                          0.0,
+                          0.0,
+                        ),
+                        child: Text(
+                          'Rain expected at 6PM - Dont forget your umberlla!',
+                          style: FlutterFlowTheme.of(context).bodyMedium
+                              .override(
+                                font: GoogleFonts.readexPro(
+                                  fontWeight: FlutterFlowTheme.of(
+                                    context,
+                                  ).bodyMedium.fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(
+                                    context,
+                                  ).bodyMedium.fontStyle,
+                                ),
+                                color: FlutterFlowTheme.of(context).warning,
+                                fontSize: 14.0,
+                                letterSpacing: 0.0,
+                                fontWeight: FlutterFlowTheme.of(
+                                  context,
+                                ).bodyMedium.fontWeight,
+                                fontStyle: FlutterFlowTheme.of(
+                                  context,
+                                ).bodyMedium.fontStyle,
+                              ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(
+                0.0,
+                valueOrDefault<double>(
+                  MediaQuery.sizeOf(context).width < kBreakpointSmall
+                      ? 10.0
+                      : 10.0,
+                  0.0,
+                ),
+                0.0,
+                0.0,
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            '22',
+                            style: FlutterFlowTheme.of(context).bodyMedium
+                                .override(
+                                  font: GoogleFonts.readexPro(
+                                    fontWeight: FontWeight.w300,
+                                    fontStyle: FlutterFlowTheme.of(
+                                      context,
+                                    ).bodyMedium.fontStyle,
+                                  ),
+                                  color: FlutterFlowTheme.of(
+                                    context,
+                                  ).primaryBackground,
+                                  fontSize: 70.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w300,
+                                  fontStyle: FlutterFlowTheme.of(
+                                    context,
+                                  ).bodyMedium.fontStyle,
+                                ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                              valueOrDefault<double>(
+                                MediaQuery.sizeOf(context).width <
+                                        kBreakpointSmall
+                                    ? 5.0
+                                    : 5.0,
+                                0.0,
+                              ),
+                              0.0,
+                              0.0,
+                              valueOrDefault<double>(
+                                MediaQuery.sizeOf(context).width <
+                                        kBreakpointSmall
+                                    ? 10.0
+                                    : 10.0,
+                                0.0,
+                              ),
+                            ),
+                            child: Text(
+                              '*C',
+                              style: FlutterFlowTheme.of(context).bodyMedium
+                                  .override(
+                                    font: GoogleFonts.readexPro(
+                                      fontWeight: FontWeight.w300,
+                                      fontStyle: FlutterFlowTheme.of(
+                                        context,
+                                      ).bodyMedium.fontStyle,
+                                    ),
+                                    color: FlutterFlowTheme.of(
+                                      context,
+                                    ).primaryBackground,
+                                    fontSize: 35.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.w300,
+                                    fontStyle: FlutterFlowTheme.of(
+                                      context,
+                                    ).bodyMedium.fontStyle,
+                                  ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Text(
+                        'Partly Sunny',
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          font: GoogleFonts.readexPro(
+                            fontWeight: FlutterFlowTheme.of(
+                              context,
+                            ).bodyMedium.fontWeight,
+                            fontStyle: FlutterFlowTheme.of(
+                              context,
+                            ).bodyMedium.fontStyle,
+                          ),
+                          color: FlutterFlowTheme.of(context).primaryBackground,
+                          fontSize: 18.0,
+                          letterSpacing: 0.0,
+                          fontWeight: FlutterFlowTheme.of(
+                            context,
+                          ).bodyMedium.fontWeight,
+                          fontStyle: FlutterFlowTheme.of(
+                            context,
+                          ).bodyMedium.fontStyle,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Container(
+                    width: 80.0,
+                    height: 80.0,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).accent2,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Icon(
+                      Icons.sunny,
+                      color: FlutterFlowTheme.of(context).warning,
+                      size: 40.0,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(
+                0.0,
+                valueOrDefault<double>(
+                  MediaQuery.sizeOf(context).width < kBreakpointSmall
+                      ? 25.0
+                      : 25.0,
+                  0.0,
+                ),
+                0.0,
+                valueOrDefault<double>(
+                  MediaQuery.sizeOf(context).width < kBreakpointSmall
+                      ? 15.0
+                      : 15.0,
+                  0.0,
+                ),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Icon(
+                    Icons.water_drop_outlined,
+                    color: FlutterFlowTheme.of(context).secondary,
+                    size: 24.0,
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(
+                      valueOrDefault<double>(
+                        MediaQuery.sizeOf(context).width < kBreakpointSmall
+                            ? 5.0
+                            : 5.0,
+                        0.0,
+                      ),
+                      0.0,
+                      0.0,
+                      0.0,
+                    ),
+                    child: Text(
+                      '65 %',
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        font: GoogleFonts.readexPro(
+                          fontWeight: FlutterFlowTheme.of(
+                            context,
+                          ).bodyMedium.fontWeight,
+                          fontStyle: FlutterFlowTheme.of(
+                            context,
+                          ).bodyMedium.fontStyle,
+                        ),
+                        color: FlutterFlowTheme.of(context).primaryBackground,
+                        fontSize: 16.0,
+                        letterSpacing: 0.0,
+                        fontWeight: FlutterFlowTheme.of(
+                          context,
+                        ).bodyMedium.fontWeight,
+                        fontStyle: FlutterFlowTheme.of(
+                          context,
+                        ).bodyMedium.fontStyle,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(
+                      valueOrDefault<double>(
+                        MediaQuery.sizeOf(context).width < kBreakpointSmall
+                            ? 20.0
+                            : 20.0,
+                        0.0,
+                      ),
+                      0.0,
+                      0.0,
+                      0.0,
+                    ),
+                    child: Icon(
+                      Icons.air,
+                      color: FlutterFlowTheme.of(context).primary,
+                      size: 24.0,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(
+                      valueOrDefault<double>(
+                        MediaQuery.sizeOf(context).width < kBreakpointSmall
+                            ? 5.0
+                            : 5.0,
+                        0.0,
+                      ),
+                      0.0,
+                      0.0,
+                      0.0,
+                    ),
+                    child: Text(
+                      '12 km/h',
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        font: GoogleFonts.readexPro(
+                          fontWeight: FlutterFlowTheme.of(
+                            context,
+                          ).bodyMedium.fontWeight,
+                          fontStyle: FlutterFlowTheme.of(
+                            context,
+                          ).bodyMedium.fontStyle,
+                        ),
+                        color: FlutterFlowTheme.of(context).primaryBackground,
+                        fontSize: 16.0,
+                        letterSpacing: 0.0,
+                        fontWeight: FlutterFlowTheme.of(
+                          context,
+                        ).bodyMedium.fontWeight,
+                        fontStyle: FlutterFlowTheme.of(
+                          context,
+                        ).bodyMedium.fontStyle,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Divider(color: FlutterFlowTheme.of(context).secondaryText),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(
+                0.0,
+                valueOrDefault<double>(
+                  MediaQuery.sizeOf(context).width < kBreakpointSmall
+                      ? 15.0
+                      : 15.0,
+                  0.0,
+                ),
+                0.0,
+                0.0,
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Align(
+                    alignment: AlignmentDirectional(1.0, 0.0),
+                    child: Container(
+                      width: 30.0,
+                      height: 30.0,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).accent1,
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: FlutterFlowTheme.of(context).primary,
+                        ),
+                      ),
+                      child: Icon(
+                        Icons.person_2,
+                        color: FlutterFlowTheme.of(context).primary,
+                        size: 17.0,
+                      ),
+                    ),
+                  ),
+                  Flexible(
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                        valueOrDefault<double>(
+                          MediaQuery.sizeOf(context).width < kBreakpointSmall
+                              ? 15.0
+                              : 15.0,
+                          0.0,
+                        ),
+                        0.0,
+                        0.0,
+                        0.0,
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'AI Suggestion',
+                            style: FlutterFlowTheme.of(context).bodyMedium
+                                .override(
+                                  font: GoogleFonts.readexPro(
+                                    fontWeight: FontWeight.w600,
+                                    fontStyle: FlutterFlowTheme.of(
+                                      context,
+                                    ).bodyMedium.fontStyle,
+                                  ),
+                                  color: FlutterFlowTheme.of(
+                                    context,
+                                  ).secondaryText,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w600,
+                                  fontStyle: FlutterFlowTheme.of(
+                                    context,
+                                  ).bodyMedium.fontStyle,
+                                ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0,
+                              valueOrDefault<double>(
+                                MediaQuery.sizeOf(context).width <
+                                        kBreakpointSmall
+                                    ? 5.0
+                                    : 5.0,
+                                0.0,
+                              ),
+                              0.0,
+                              0.0,
+                            ),
+                            child: Text(
+                              'Light jacket recommended. Temperature will drop to 15*C by evening.',
+                              style: FlutterFlowTheme.of(context).bodyMedium
+                                  .override(
+                                    font: GoogleFonts.readexPro(
+                                      fontWeight: FlutterFlowTheme.of(
+                                        context,
+                                      ).bodyMedium.fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(
+                                        context,
+                                      ).bodyMedium.fontStyle,
+                                    ),
+                                    color: FlutterFlowTheme.of(
+                                      context,
+                                    ).primaryBackground,
+                                    fontSize: 14.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(
+                                      context,
+                                    ).bodyMedium.fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(
+                                      context,
+                                    ).bodyMedium.fontStyle,
+                                  ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
@@ -851,6 +1334,73 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     );
   }
 
+  Container buildMenu() {
+    return Container(
+      width: MediaQuery.sizeOf(context).width * 1.0,
+      height: 90.0,
+      decoration: BoxDecoration(
+        color: FlutterFlowTheme.of(context).primaryText,
+        boxShadow: [
+          BoxShadow(
+            blurRadius: 4.0,
+            color: Color(0x33000000),
+            offset: Offset(0.0, -2.0),
+          ),
+        ],
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(0.0),
+          bottomRight: Radius.circular(0.0),
+          topLeft: Radius.circular(20.0),
+          topRight: Radius.circular(20.0),
+        ),
+        border: Border.all(color: FlutterFlowTheme.of(context).secondaryText),
+      ),
+      child: TabBar(
+        labelColor: FlutterFlowTheme.of(context).primary,
+        unselectedLabelColor: FlutterFlowTheme.of(context).primaryBackground,
+        labelStyle: FlutterFlowTheme.of(context).titleMedium.override(
+          font: GoogleFonts.readexPro(
+            fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
+            fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
+          ),
+          letterSpacing: 0.0,
+          fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
+          fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
+        ),
+        unselectedLabelStyle: FlutterFlowTheme.of(context).titleMedium.override(
+          font: GoogleFonts.readexPro(
+            fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
+            fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
+          ),
+          letterSpacing: 0.0,
+          fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
+          fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
+        ),
+        indicatorColor: FlutterFlowTheme.of(context).primary,
+        tabs: [
+          Tab(icon: Icon(Icons.home_outlined, size: 30.0), text: 'Home'),
+          Tab(icon: Icon(Icons.event, size: 30.0), text: 'Events'),
+          Tab(icon: Icon(Icons.traffic, size: 30.0), text: 'Traffic'),
+          Tab(
+            icon: Icon(Icons.water_drop_outlined, size: 30.0),
+            text: 'Weather',
+          ),
+          Tab(icon: Icon(Icons.person_outline, size: 30.0), text: 'Profile'),
+        ],
+        controller: _model.tabBarController,
+        onTap: (i) async {
+          [
+            () async {},
+            () async {},
+            () async {},
+            () async {},
+            () async {},
+          ][i]();
+        },
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -861,6 +1411,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryText,
+        bottomNavigationBar: buildMenu(),
         body: Align(
           alignment: AlignmentDirectional(0.0, 1.0),
           child: Column(
@@ -873,8 +1424,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Container(
-                          width: 474.6,
-                          height: 63.4,
+                          height: MediaQuery.sizeOf(context).height * 0.03,
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context).primaryText,
                           ),
@@ -1185,19 +1735,19 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.center,
                                       children: [
-                                        buildContainer(
+                                        buildActions(
                                           'Food',
                                           Icons.fastfood_outlined,
                                           1,
                                           FlutterFlowTheme.of(context).warning,
                                         ),
-                                        buildContainer(
+                                        buildActions(
                                           'Events',
                                           Icons.calendar_month,
                                           2,
                                           FlutterFlowTheme.of(context).primary,
                                         ),
-                                        buildContainer(
+                                        buildActions(
                                           'Stay',
                                           Icons.location_city_sharp,
                                           3,
@@ -1205,7 +1755,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                             context,
                                           ).secondary,
                                         ),
-                                        buildContainer(
+                                        buildActions(
                                           'Surpirse',
                                           Icons.auto_awesome_sharp,
                                           4,
@@ -1263,721 +1813,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                       0.0,
                                       0.0,
                                     ),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(
-                                          context,
-                                        ).primaryText,
-                                        borderRadius: BorderRadius.only(
-                                          bottomLeft: Radius.circular(20.0),
-                                          bottomRight: Radius.circular(20.0),
-                                          topLeft: Radius.circular(20.0),
-                                          topRight: Radius.circular(20.0),
-                                        ),
-                                        border: Border.all(
-                                          color: FlutterFlowTheme.of(
-                                            context,
-                                          ).secondaryText,
-                                        ),
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                          valueOrDefault<double>(
-                                            MediaQuery.sizeOf(context).width <
-                                                    kBreakpointSmall
-                                                ? 20.0
-                                                : 20.0,
-                                            0.0,
-                                          ),
-                                          valueOrDefault<double>(
-                                            MediaQuery.sizeOf(context).width <
-                                                    kBreakpointSmall
-                                                ? 20.0
-                                                : 20.0,
-                                            0.0,
-                                          ),
-                                          valueOrDefault<double>(
-                                            MediaQuery.sizeOf(context).width <
-                                                    kBreakpointSmall
-                                                ? 20.0
-                                                : 20.0,
-                                            0.0,
-                                          ),
-                                          valueOrDefault<double>(
-                                            MediaQuery.sizeOf(context).width <
-                                                    kBreakpointSmall
-                                                ? 20.0
-                                                : 20.0,
-                                            0.0,
-                                          ),
-                                        ),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Container(
-                                              decoration: BoxDecoration(
-                                                color: FlutterFlowTheme.of(
-                                                  context,
-                                                ).tertiary,
-                                                borderRadius: BorderRadius.only(
-                                                  bottomLeft: Radius.circular(
-                                                    20.0,
-                                                  ),
-                                                  bottomRight: Radius.circular(
-                                                    20.0,
-                                                  ),
-                                                  topLeft: Radius.circular(
-                                                    20.0,
-                                                  ),
-                                                  topRight: Radius.circular(
-                                                    20.0,
-                                                  ),
-                                                ),
-                                              ),
-                                              child: Padding(
-                                                padding:
-                                                    EdgeInsetsDirectional.fromSTEB(
-                                                      valueOrDefault<double>(
-                                                        MediaQuery.sizeOf(
-                                                                  context,
-                                                                ).width <
-                                                                kBreakpointSmall
-                                                            ? 10.0
-                                                            : 10.0,
-                                                        0.0,
-                                                      ),
-                                                      0.0,
-                                                      valueOrDefault<double>(
-                                                        MediaQuery.sizeOf(
-                                                                  context,
-                                                                ).width <
-                                                                kBreakpointSmall
-                                                            ? 10.0
-                                                            : 10.0,
-                                                        0.0,
-                                                      ),
-                                                      0.0,
-                                                    ),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    FaIcon(
-                                                      FontAwesomeIcons.umbrella,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                            context,
-                                                          ).warning,
-                                                      size: 24.0,
-                                                    ),
-                                                    Flexible(
-                                                      child: Padding(
-                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                          valueOrDefault<
-                                                            double
-                                                          >(
-                                                            MediaQuery.sizeOf(
-                                                                      context,
-                                                                    ).width <
-                                                                    kBreakpointSmall
-                                                                ? 10.0
-                                                                : 10.0,
-                                                            0.0,
-                                                          ),
-                                                          0.0,
-                                                          0.0,
-                                                          0.0,
-                                                        ),
-                                                        child: Text(
-                                                          'Rain expected at 6PM - Dont forget your umberlla!',
-                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                            font: GoogleFonts.readexPro(
-                                                              fontWeight:
-                                                                  FlutterFlowTheme.of(
-                                                                        context,
-                                                                      )
-                                                                      .bodyMedium
-                                                                      .fontWeight,
-                                                              fontStyle:
-                                                                  FlutterFlowTheme.of(
-                                                                        context,
-                                                                      )
-                                                                      .bodyMedium
-                                                                      .fontStyle,
-                                                            ),
-                                                            color:
-                                                                FlutterFlowTheme.of(
-                                                                  context,
-                                                                ).warning,
-                                                            fontSize: 14.0,
-                                                            letterSpacing: 0.0,
-                                                            fontWeight:
-                                                                FlutterFlowTheme.of(
-                                                                      context,
-                                                                    )
-                                                                    .bodyMedium
-                                                                    .fontWeight,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                      context,
-                                                                    )
-                                                                    .bodyMedium
-                                                                    .fontStyle,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding:
-                                                  EdgeInsetsDirectional.fromSTEB(
-                                                    0.0,
-                                                    valueOrDefault<double>(
-                                                      MediaQuery.sizeOf(
-                                                                context,
-                                                              ).width <
-                                                              kBreakpointSmall
-                                                          ? 10.0
-                                                          : 10.0,
-                                                      0.0,
-                                                    ),
-                                                    0.0,
-                                                    0.0,
-                                                  ),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .end,
-                                                        children: [
-                                                          Text(
-                                                            '22',
-                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                              font: GoogleFonts.readexPro(
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w300,
-                                                                fontStyle:
-                                                                    FlutterFlowTheme.of(
-                                                                          context,
-                                                                        )
-                                                                        .bodyMedium
-                                                                        .fontStyle,
-                                                              ),
-                                                              color: FlutterFlowTheme.of(
-                                                                context,
-                                                              ).primaryBackground,
-                                                              fontSize: 70.0,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w300,
-                                                              fontStyle:
-                                                                  FlutterFlowTheme.of(
-                                                                        context,
-                                                                      )
-                                                                      .bodyMedium
-                                                                      .fontStyle,
-                                                            ),
-                                                          ),
-                                                          Padding(
-                                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                              valueOrDefault<
-                                                                double
-                                                              >(
-                                                                MediaQuery.sizeOf(
-                                                                          context,
-                                                                        ).width <
-                                                                        kBreakpointSmall
-                                                                    ? 5.0
-                                                                    : 5.0,
-                                                                0.0,
-                                                              ),
-                                                              0.0,
-                                                              0.0,
-                                                              valueOrDefault<
-                                                                double
-                                                              >(
-                                                                MediaQuery.sizeOf(
-                                                                          context,
-                                                                        ).width <
-                                                                        kBreakpointSmall
-                                                                    ? 10.0
-                                                                    : 10.0,
-                                                                0.0,
-                                                              ),
-                                                            ),
-                                                            child: Text(
-                                                              '*C',
-                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                font: GoogleFonts.readexPro(
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w300,
-                                                                  fontStyle:
-                                                                      FlutterFlowTheme.of(
-                                                                        context,
-                                                                      ).bodyMedium.fontStyle,
-                                                                ),
-                                                                color: FlutterFlowTheme.of(
-                                                                  context,
-                                                                ).primaryBackground,
-                                                                fontSize: 35.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w300,
-                                                                fontStyle:
-                                                                    FlutterFlowTheme.of(
-                                                                          context,
-                                                                        )
-                                                                        .bodyMedium
-                                                                        .fontStyle,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      Text(
-                                                        'Partly Sunny',
-                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                          font: GoogleFonts.readexPro(
-                                                            fontWeight:
-                                                                FlutterFlowTheme.of(
-                                                                      context,
-                                                                    )
-                                                                    .bodyMedium
-                                                                    .fontWeight,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                      context,
-                                                                    )
-                                                                    .bodyMedium
-                                                                    .fontStyle,
-                                                          ),
-                                                          color:
-                                                              FlutterFlowTheme.of(
-                                                                context,
-                                                              ).primaryBackground,
-                                                          fontSize: 18.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                    context,
-                                                                  )
-                                                                  .bodyMedium
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                    context,
-                                                                  )
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  Container(
-                                                    width: 80.0,
-                                                    height: 80.0,
-                                                    decoration: BoxDecoration(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                            context,
-                                                          ).accent2,
-                                                      shape: BoxShape.circle,
-                                                    ),
-                                                    child: Icon(
-                                                      Icons.sunny,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                            context,
-                                                          ).warning,
-                                                      size: 40.0,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding:
-                                                  EdgeInsetsDirectional.fromSTEB(
-                                                    0.0,
-                                                    valueOrDefault<double>(
-                                                      MediaQuery.sizeOf(
-                                                                context,
-                                                              ).width <
-                                                              kBreakpointSmall
-                                                          ? 25.0
-                                                          : 25.0,
-                                                      0.0,
-                                                    ),
-                                                    0.0,
-                                                    valueOrDefault<double>(
-                                                      MediaQuery.sizeOf(
-                                                                context,
-                                                              ).width <
-                                                              kBreakpointSmall
-                                                          ? 15.0
-                                                          : 15.0,
-                                                      0.0,
-                                                    ),
-                                                  ),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Icon(
-                                                    Icons.water_drop_outlined,
-                                                    color: FlutterFlowTheme.of(
-                                                      context,
-                                                    ).secondary,
-                                                    size: 24.0,
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional.fromSTEB(
-                                                          valueOrDefault<
-                                                            double
-                                                          >(
-                                                            MediaQuery.sizeOf(
-                                                                      context,
-                                                                    ).width <
-                                                                    kBreakpointSmall
-                                                                ? 5.0
-                                                                : 5.0,
-                                                            0.0,
-                                                          ),
-                                                          0.0,
-                                                          0.0,
-                                                          0.0,
-                                                        ),
-                                                    child: Text(
-                                                      '65 %',
-                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                        font: GoogleFonts.readexPro(
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                    context,
-                                                                  )
-                                                                  .bodyMedium
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                    context,
-                                                                  )
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                              context,
-                                                            ).primaryBackground,
-                                                        fontSize: 16.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FlutterFlowTheme.of(
-                                                                  context,
-                                                                )
-                                                                .bodyMedium
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                  context,
-                                                                )
-                                                                .bodyMedium
-                                                                .fontStyle,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional.fromSTEB(
-                                                          valueOrDefault<
-                                                            double
-                                                          >(
-                                                            MediaQuery.sizeOf(
-                                                                      context,
-                                                                    ).width <
-                                                                    kBreakpointSmall
-                                                                ? 20.0
-                                                                : 20.0,
-                                                            0.0,
-                                                          ),
-                                                          0.0,
-                                                          0.0,
-                                                          0.0,
-                                                        ),
-                                                    child: Icon(
-                                                      Icons.air,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                            context,
-                                                          ).primary,
-                                                      size: 24.0,
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional.fromSTEB(
-                                                          valueOrDefault<
-                                                            double
-                                                          >(
-                                                            MediaQuery.sizeOf(
-                                                                      context,
-                                                                    ).width <
-                                                                    kBreakpointSmall
-                                                                ? 5.0
-                                                                : 5.0,
-                                                            0.0,
-                                                          ),
-                                                          0.0,
-                                                          0.0,
-                                                          0.0,
-                                                        ),
-                                                    child: Text(
-                                                      '12 km/h',
-                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                        font: GoogleFonts.readexPro(
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                    context,
-                                                                  )
-                                                                  .bodyMedium
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                    context,
-                                                                  )
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                              context,
-                                                            ).primaryBackground,
-                                                        fontSize: 16.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FlutterFlowTheme.of(
-                                                                  context,
-                                                                )
-                                                                .bodyMedium
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                  context,
-                                                                )
-                                                                .bodyMedium
-                                                                .fontStyle,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            Divider(
-                                              color: FlutterFlowTheme.of(
-                                                context,
-                                              ).secondaryText,
-                                            ),
-                                            Padding(
-                                              padding:
-                                                  EdgeInsetsDirectional.fromSTEB(
-                                                    0.0,
-                                                    valueOrDefault<double>(
-                                                      MediaQuery.sizeOf(
-                                                                context,
-                                                              ).width <
-                                                              kBreakpointSmall
-                                                          ? 15.0
-                                                          : 15.0,
-                                                      0.0,
-                                                    ),
-                                                    0.0,
-                                                    0.0,
-                                                  ),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.start,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Align(
-                                                    alignment:
-                                                        AlignmentDirectional(
-                                                          1.0,
-                                                          0.0,
-                                                        ),
-                                                    child: Container(
-                                                      width: 30.0,
-                                                      height: 30.0,
-                                                      decoration: BoxDecoration(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                              context,
-                                                            ).accent1,
-                                                        shape: BoxShape.circle,
-                                                        border: Border.all(
-                                                          color:
-                                                              FlutterFlowTheme.of(
-                                                                context,
-                                                              ).primary,
-                                                        ),
-                                                      ),
-                                                      child: Icon(
-                                                        Icons.person_2,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                              context,
-                                                            ).primary,
-                                                        size: 17.0,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Flexible(
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional.fromSTEB(
-                                                            valueOrDefault<
-                                                              double
-                                                            >(
-                                                              MediaQuery.sizeOf(
-                                                                        context,
-                                                                      ).width <
-                                                                      kBreakpointSmall
-                                                                  ? 15.0
-                                                                  : 15.0,
-                                                              0.0,
-                                                            ),
-                                                            0.0,
-                                                            0.0,
-                                                            0.0,
-                                                          ),
-                                                      child: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .center,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Text(
-                                                            'AI Suggestion',
-                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                              font: GoogleFonts.readexPro(
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                                fontStyle:
-                                                                    FlutterFlowTheme.of(
-                                                                          context,
-                                                                        )
-                                                                        .bodyMedium
-                                                                        .fontStyle,
-                                                              ),
-                                                              color:
-                                                                  FlutterFlowTheme.of(
-                                                                    context,
-                                                                  ).secondaryText,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                              fontStyle:
-                                                                  FlutterFlowTheme.of(
-                                                                        context,
-                                                                      )
-                                                                      .bodyMedium
-                                                                      .fontStyle,
-                                                            ),
-                                                          ),
-                                                          Padding(
-                                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                              0.0,
-                                                              valueOrDefault<
-                                                                double
-                                                              >(
-                                                                MediaQuery.sizeOf(
-                                                                          context,
-                                                                        ).width <
-                                                                        kBreakpointSmall
-                                                                    ? 5.0
-                                                                    : 5.0,
-                                                                0.0,
-                                                              ),
-                                                              0.0,
-                                                              0.0,
-                                                            ),
-                                                            child: Text(
-                                                              'Light jacket recommended. Temperature will drop to 15*C by evening.',
-                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                font: GoogleFonts.readexPro(
-                                                                  fontWeight:
-                                                                      FlutterFlowTheme.of(
-                                                                        context,
-                                                                      ).bodyMedium.fontWeight,
-                                                                  fontStyle:
-                                                                      FlutterFlowTheme.of(
-                                                                        context,
-                                                                      ).bodyMedium.fontStyle,
-                                                                ),
-                                                                color: FlutterFlowTheme.of(
-                                                                  context,
-                                                                ).primaryBackground,
-                                                                fontSize: 14.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FlutterFlowTheme.of(
-                                                                          context,
-                                                                        )
-                                                                        .bodyMedium
-                                                                        .fontWeight,
-                                                                fontStyle:
-                                                                    FlutterFlowTheme.of(
-                                                                          context,
-                                                                        )
-                                                                        .bodyMedium
-                                                                        .fontStyle,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
+                                    child: buildWeatherNow(),
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
@@ -2253,6 +2089,12 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                             ),
                           ),
                         ),
+                        Container(
+                          height: MediaQuery.sizeOf(context).height * 0.03,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context).primaryText,
+                          ),
+                        ),
                       ],
                     ),
                     Column(mainAxisSize: MainAxisSize.max, children: []),
@@ -2260,68 +2102,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                     Column(mainAxisSize: MainAxisSize.max, children: []),
                     Column(mainAxisSize: MainAxisSize.max, children: []),
                   ],
-                ),
-              ),
-              Align(
-                alignment: Alignment(0.0, 0),
-                child: TabBar(
-                  labelColor: FlutterFlowTheme.of(context).primaryBackground,
-                  unselectedLabelColor: FlutterFlowTheme.of(
-                    context,
-                  ).primaryBackground,
-                  labelStyle: FlutterFlowTheme.of(context).titleMedium.override(
-                    font: GoogleFonts.readexPro(
-                      fontWeight: FlutterFlowTheme.of(
-                        context,
-                      ).titleMedium.fontWeight,
-                      fontStyle: FlutterFlowTheme.of(
-                        context,
-                      ).titleMedium.fontStyle,
-                    ),
-                    letterSpacing: 0.0,
-                    fontWeight: FlutterFlowTheme.of(
-                      context,
-                    ).titleMedium.fontWeight,
-                    fontStyle: FlutterFlowTheme.of(
-                      context,
-                    ).titleMedium.fontStyle,
-                  ),
-                  unselectedLabelStyle: FlutterFlowTheme.of(context).titleMedium
-                      .override(
-                        font: GoogleFonts.readexPro(
-                          fontWeight: FlutterFlowTheme.of(
-                            context,
-                          ).titleMedium.fontWeight,
-                          fontStyle: FlutterFlowTheme.of(
-                            context,
-                          ).titleMedium.fontStyle,
-                        ),
-                        letterSpacing: 0.0,
-                        fontWeight: FlutterFlowTheme.of(
-                          context,
-                        ).titleMedium.fontWeight,
-                        fontStyle: FlutterFlowTheme.of(
-                          context,
-                        ).titleMedium.fontStyle,
-                      ),
-                  indicatorColor: FlutterFlowTheme.of(context).primary,
-                  tabs: [
-                    Tab(text: 'Home'),
-                    Tab(text: 'Events'),
-                    Tab(text: 'Traffic'),
-                    Tab(text: 'Weather'),
-                    Tab(text: 'Profile'),
-                  ],
-                  controller: _model.tabBarController,
-                  onTap: (i) async {
-                    [
-                      () async {},
-                      () async {},
-                      () async {},
-                      () async {},
-                      () async {},
-                    ][i]();
-                  },
                 ),
               ),
             ],
