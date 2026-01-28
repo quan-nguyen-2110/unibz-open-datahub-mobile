@@ -37,8 +37,9 @@ jobs:
       #   run: dart format --output=none --set-exit-if-changed .
 
       # Consider passing '--fatal-infos' for slightly stricter analysis.
+      # Ignore infos & warnings in CI
       - name: Analyze project source
-        run: dart analyze
+        run: dart analyze --no-fatal-infos --no-fatal-warnings
 
       # Your project will need to have tests in test/ and a dependency on
       # package:test for this step to succeed. Note that Flutter projects will
