@@ -1,6 +1,7 @@
 import 'package:open_data_hub_mobile_app/widgets/actions.dart';
 import 'package:open_data_hub_mobile_app/widgets/menu.dart';
 import 'package:open_data_hub_mobile_app/widgets/picked_for_you.dart';
+import 'package:open_data_hub_mobile_app/widgets/ski_are.dart';
 import 'package:open_data_hub_mobile_app/widgets/traffic_and_transit.dart';
 import 'package:open_data_hub_mobile_app/widgets/weather_now.dart';
 
@@ -256,8 +257,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                                   0.0,
                                                   0.0,
                                                 ),
+                                            // Hello, Quan 👋
                                             child: Row(
-                                              // Hello, Quan 👋
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 Text(
@@ -473,7 +474,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                     ),
                                     child: TrafficAndTransitWidget(),
                                   ),
-                                  // Picked For You Widget
+                                  // Ski Areas Widget
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0,
@@ -482,6 +483,22 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                                 kBreakpointSmall
                                             ? 50.0
                                             : 50.0,
+                                        0.0,
+                                      ),
+                                      0.0,
+                                      0.0,
+                                    ),
+                                    child: SkiAreaWidget(),
+                                  ),
+                                  // Picked For You Widget
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0,
+                                      valueOrDefault<double>(
+                                        MediaQuery.sizeOf(context).width <
+                                                kBreakpointSmall
+                                            ? 30.0
+                                            : 30.0,
                                         0.0,
                                       ),
                                       0.0,
