@@ -352,7 +352,7 @@ class _WeatherNowWidgetState extends State<WeatherNowWidget> {
                                         ],
                                       ),
                                       Text(
-                                        'Partly Sunny',
+                                        weather?.shortDesc ?? '--',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(

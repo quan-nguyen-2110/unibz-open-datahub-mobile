@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class Weather {
+  final String? shortDesc;
   final String accessoryRec;
   final String travelRec;
   final String alerts;
@@ -11,6 +12,7 @@ class Weather {
   final String? humidity;
 
   Weather({
+    required this.shortDesc,
     required this.accessoryRec,
     required this.travelRec,
     required this.alerts,
@@ -22,6 +24,7 @@ class Weather {
 
   factory Weather.fromJson(Map<String, dynamic> json) {
     return Weather(
+      shortDesc: json['aiAnalysis']?['shortDes'],
       accessoryRec: json['aiAnalysis']?['accessoryRec'] ?? '-',
       travelRec: json['aiAnalysis']?['travelRec'] ?? '',
       alerts: json['aiAnalysis']?['alerts'] ?? '',
@@ -53,8 +56,8 @@ class WeatherService {
         .timeout(const Duration(seconds: 300));
 
     if (response.statusCode == 200) {
-      print('Weather data fetched successfully');
       final data = jsonDecode(response.body);
+      print('Weather data fetched successfully: ${data['aiAnalysis']}');
       // return Weather.fromJson(data['Items'][0]);
       return Weather.fromJson(data);
     } else {
