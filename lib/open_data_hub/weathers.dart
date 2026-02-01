@@ -2,70 +2,65 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class Weather {
-  final String evolutiontitle;
-  final String evolution;
+  final String accessoryRec;
+  final String travelRec;
+  final String alerts;
 
-  final String date;
-  final String title;
-  final String weatherDesc;
-  final String weatherImgUrl;
-
-  final int tempMaxmax;
-  final int tempMaxmin;
-  final int tempMinmax;
-  final int tempMinmin;
+  final String? windSpeed;
+  final String? temperature;
+  final String? humidity;
 
   Weather({
-    required this.evolutiontitle,
-    required this.evolution,
+    required this.accessoryRec,
+    required this.travelRec,
+    required this.alerts,
 
-    required this.date,
-    required this.title,
-    required this.weatherDesc,
-    required this.weatherImgUrl,
-
-    required this.tempMaxmax,
-    required this.tempMaxmin,
-    required this.tempMinmax,
-    required this.tempMinmin,
+    required this.windSpeed,
+    required this.temperature,
+    required this.humidity,
   });
 
   factory Weather.fromJson(Map<String, dynamic> json) {
     return Weather(
-      evolutiontitle: json['EvolutionTitle'] ?? '',
-      evolution: json['Evolution'] ?? '',
+      accessoryRec: json['aiAnalysis']?['accessoryRec'] ?? '-',
+      travelRec: json['aiAnalysis']?['travelRec'] ?? '',
+      alerts: json['aiAnalysis']?['alerts'] ?? '',
 
-      date: json['Conditions']?[0]?['Date'] ?? '',
-      title: json['Conditions']?[0]?['Title'] ?? '',
-      weatherDesc: json['Conditions']?[0]?['WeatherDesc'] ?? '',
-      weatherImgUrl: json['Conditions']?[0]?['WeatherImgUrl'] ?? '',
-
-      tempMaxmax: json['Conditions']?[0]?['TempMaxmax'] ?? '',
-      tempMaxmin: json['Conditions']?[0]?['TempMaxmin'] ?? '',
-      tempMinmax: json['Conditions']?[0]?['TempMinmax'] ?? '',
-      tempMinmin: json['Conditions']?[0]?['TempMinmin'] ?? '',
+      windSpeed: json['data']?['ff'],
+      temperature: json['data']?['t'],
+      humidity: json['data']?['rh'],
     );
   }
 }
 
 class WeatherService {
   // Base URL of the API
-  static const String _baseUrl = 'https://tourism.opendatahub.com/v1/Weather';
+  // static const String _baseUrl =
+  //     'https://tourism.opendatahub.com/v1/Weather/Realtime';
+  static const String _baseUrl = 'http://10.0.2.2:8080/api/weather/ai';
 
   /// Fetch weather data from the OpenDataHub API
   /// Returns a List of weather data
-  Future<Weather> fetchWeather({int pageNumber = 1}) async {
-    final uri = Uri.parse('$_baseUrl?language=en&extended=true');
+  Future<Weather> fetchWeather(double latitude, double longitude) async {
+    // final uri = Uri.parse(
+    //   '$_baseUrl?language=en&pagesize=1&pagenumber=1&latitude=$latitude&longitude=$longitude',
+    // );
+    final uri = Uri.parse('$_baseUrl?latitude=$latitude&longitude=$longitude');
 
     print('Fetching weather data from: $uri');
-    final response = await http.get(uri, headers: {'accept': 'text/plain'});
+    final response = await http
+        .get(uri, headers: {'accept': 'application/json'})
+        .timeout(const Duration(seconds: 300));
 
     if (response.statusCode == 200) {
       print('Weather data fetched successfully');
       final data = jsonDecode(response.body);
+      // return Weather.fromJson(data['Items'][0]);
       return Weather.fromJson(data);
     } else {
-      throw Exception('Failed to load weather data: ${response.statusCode}');
+      throw Exception(
+        'Failed to load weather data: ${response.statusCode} - ${response.body}',
+      );
     }
   }
 }

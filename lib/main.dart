@@ -62,6 +62,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     )..addListener(() => safeSetState(() {}));
 
     fetchCity();
+    fetchPosition();
   }
 
   @override
@@ -73,12 +74,35 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
   int selectedIndex = -1; // -1 means none selected initially
   String cityName = "Loading ...";
+  double latitude = 0.0;
+  double longitude = 0.0;
 
-  void fetchCity() async {
-    String city = await LocationService.getCurrentCity();
-    setState(() {
-      cityName = city;
-    });
+  void fetchPosition() {
+    LocationService.getCurrentPosition()
+        .then((position) {
+          setState(() {
+            latitude = position.latitude;
+            longitude = position.longitude;
+          });
+          print(
+            'Current position: Lat ${position.latitude}, Lon ${position.longitude}',
+          );
+        })
+        .catchError((error) {
+          print('Error getting location: $error');
+        });
+  }
+
+  void fetchCity() {
+    LocationService.getCurrentCity()
+        .then((city) {
+          setState(() {
+            cityName = city;
+          });
+        })
+        .catchError((error) {
+          print('Error getting city: $error');
+        });
   }
 
   @override
@@ -428,7 +452,10 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                       0.0,
                                       0.0,
                                     ),
-                                    child: WeatherNowWidget(),
+                                    child: WeatherNowWidget(
+                                      latitude: latitude,
+                                      longitude: longitude,
+                                    ),
                                   ),
                                   // Transic & Traffic Widget
                                   Padding(

@@ -7,7 +7,13 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 
 class WeatherNowWidget extends StatefulWidget {
-  const WeatherNowWidget({super.key});
+  final double latitude;
+  final double longitude;
+  const WeatherNowWidget({
+    super.key,
+    required this.latitude,
+    required this.longitude,
+  });
 
   @override
   // ignore: library_private_types_in_public_api
@@ -60,13 +66,17 @@ class _WeatherNowWidgetState extends State<WeatherNowWidget> {
             0.0,
           ),
           child: FutureBuilder<Weather>(
-            future: weatherService.fetchWeather(),
+            future: weatherService.fetchWeather(
+              widget.latitude,
+              widget.longitude,
+            ),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const CircularProgressIndicator();
               }
 
-              final weather = snapshot?.data!;
+              final weather = snapshot.data;
+              final temp = double.tryParse(weather?.temperature ?? '0') ?? 0;
 
               return Container(
                 decoration: BoxDecoration(
@@ -180,7 +190,7 @@ class _WeatherNowWidgetState extends State<WeatherNowWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     FaIcon(
-                                      FontAwesomeIcons.umbrella,
+                                      Icons.error_outline,
                                       color: FlutterFlowTheme.of(
                                         context,
                                       ).warning,
@@ -201,7 +211,7 @@ class _WeatherNowWidgetState extends State<WeatherNowWidget> {
                                           0.0,
                                         ),
                                         child: Text(
-                                          'Rain expected at 6PM - Dont forget your umberlla!',
+                                          weather?.alerts ?? '--',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
@@ -263,7 +273,7 @@ class _WeatherNowWidgetState extends State<WeatherNowWidget> {
                                             CrossAxisAlignment.end,
                                         children: [
                                           Text(
-                                            '22',
+                                            weather?.temperature ?? '--',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
@@ -379,7 +389,11 @@ class _WeatherNowWidgetState extends State<WeatherNowWidget> {
                                       shape: BoxShape.circle,
                                     ),
                                     child: Icon(
-                                      Icons.sunny,
+                                      temp >= 10
+                                          ? Icons.sunny
+                                          : temp > 0
+                                          ? Icons.sunny_snowing
+                                          : Icons.snowing,
                                       color: FlutterFlowTheme.of(
                                         context,
                                       ).warning,
@@ -432,7 +446,7 @@ class _WeatherNowWidgetState extends State<WeatherNowWidget> {
                                       0.0,
                                     ),
                                     child: Text(
-                                      '65 %',
+                                      '${weather?.humidity ?? '--'} rH',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -493,7 +507,7 @@ class _WeatherNowWidgetState extends State<WeatherNowWidget> {
                                       0.0,
                                     ),
                                     child: Text(
-                                      '12 km/h',
+                                      '${weather?.windSpeed ?? '--'} km/h',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -629,7 +643,7 @@ class _WeatherNowWidgetState extends State<WeatherNowWidget> {
                                                   0.0,
                                                 ),
                                             child: Text(
-                                              'Light jacket recommended. Temperature will drop to 15*C by evening.',
+                                              weather?.travelRec ?? '--',
                                               style:
                                                   FlutterFlowTheme.of(
                                                     context,
