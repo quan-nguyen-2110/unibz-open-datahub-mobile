@@ -1,9 +1,9 @@
-import 'package:open_data_hub_mobile_app/widgets/actions.dart';
-import 'package:open_data_hub_mobile_app/widgets/menu.dart';
-import 'package:open_data_hub_mobile_app/widgets/picked_for_you.dart';
-import 'package:open_data_hub_mobile_app/widgets/ski_are.dart';
-import 'package:open_data_hub_mobile_app/widgets/traffic_and_transit.dart';
-import 'package:open_data_hub_mobile_app/widgets/weather_now.dart';
+import 'package:open_data_hub_mobile_app/widgets/actions_widget.dart';
+import 'package:open_data_hub_mobile_app/widgets/menu_widget.dart';
+import 'package:open_data_hub_mobile_app/widgets/picked_for_you_widget.dart';
+import 'package:open_data_hub_mobile_app/widgets/ski_area_widget.dart';
+import 'package:open_data_hub_mobile_app/widgets/traffic_and_transit_widget.dart';
+import 'package:open_data_hub_mobile_app/widgets/weather_now_widget.dart';
 
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -78,20 +78,19 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   double latitude = 0.0;
   double longitude = 0.0;
 
-  void fetchPosition() {
-    LocationService.getCurrentPosition()
-        .then((position) {
-          setState(() {
-            latitude = position.latitude;
-            longitude = position.longitude;
-          });
-          print(
-            'Current position: Lat ${position.latitude}, Lon ${position.longitude}',
-          );
-        })
-        .catchError((error) {
-          print('Error getting location: $error');
-        });
+  void fetchPosition() async {
+    try {
+      var position = await LocationService.getCurrentPosition();
+      setState(() {
+        latitude = position.latitude;
+        longitude = position.longitude;
+      });
+      print(
+        'Current position: Lat ${position.latitude}, Lon ${position.longitude}',
+      );
+    } catch (e) {
+      print('Error getting location: $e');
+    }
   }
 
   void fetchCity() {
@@ -106,6 +105,10 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         });
   }
 
+  final GlobalKey weatherKey = GlobalKey();
+  final GlobalKey trafficKey = GlobalKey();
+  final GlobalKey skiAreaKey = GlobalKey();
+  final GlobalKey pickedForYouKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -437,7 +440,12 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                       0.0,
                                       0.0,
                                     ),
-                                    child: ActionsWidget(),
+                                    child: ActionsWidget(
+                                      weatherKey: weatherKey,
+                                      trafficKey: trafficKey,
+                                      skiAreaKey: skiAreaKey,
+                                      pickedForYouKey: pickedForYouKey,
+                                    ),
                                   ),
                                   // Weather Now Widget
                                   Padding(
@@ -454,6 +462,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                       0.0,
                                     ),
                                     child: WeatherNowWidget(
+                                      key: weatherKey,
                                       latitude: latitude,
                                       longitude: longitude,
                                     ),
@@ -472,7 +481,9 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                       0.0,
                                       0.0,
                                     ),
-                                    child: TrafficAndTransitWidget(),
+                                    child: TrafficAndTransitWidget(
+                                      key: trafficKey,
+                                    ),
                                   ),
                                   // Ski Areas Widget
                                   Padding(
@@ -488,7 +499,11 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                       0.0,
                                       0.0,
                                     ),
-                                    child: SkiAreaWidget(),
+                                    child: SkiAreaWidget(
+                                      key: skiAreaKey,
+                                      latitude: latitude,
+                                      longitude: longitude,
+                                    ),
                                   ),
                                   // Picked For You Widget
                                   Padding(
@@ -504,7 +519,9 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                       0.0,
                                       0.0,
                                     ),
-                                    child: PickedForYouWidget(),
+                                    child: PickedForYouWidget(
+                                      key: pickedForYouKey,
+                                    ),
                                   ),
                                 ],
                               ),

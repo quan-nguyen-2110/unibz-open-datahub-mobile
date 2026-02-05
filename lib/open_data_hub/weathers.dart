@@ -53,7 +53,7 @@ class WeatherService {
     print('Fetching weather data from: $uri');
     final response = await http
         .get(uri, headers: {'accept': 'application/json'})
-        .timeout(const Duration(seconds: 300));
+        .timeout(const Duration(seconds: 120));
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);

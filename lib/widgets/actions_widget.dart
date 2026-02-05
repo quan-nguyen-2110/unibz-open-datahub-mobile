@@ -6,8 +6,18 @@ import 'package:open_data_hub_mobile_app/open_data_hub/events.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ActionsWidget extends StatefulWidget {
-  const ActionsWidget({super.key});
-
+  // final VoidCallback onScrollToTraffic;
+  final GlobalKey weatherKey;
+  final GlobalKey trafficKey;
+  final GlobalKey skiAreaKey;
+  final GlobalKey pickedForYouKey;
+  const ActionsWidget({
+    super.key,
+    required this.weatherKey,
+    required this.trafficKey,
+    required this.skiAreaKey,
+    required this.pickedForYouKey,
+  });
   @override
   // ignore: library_private_types_in_public_api
   _ActionsWidgetState createState() => _ActionsWidgetState();
@@ -25,7 +35,7 @@ class _ActionsWidgetState extends State<ActionsWidget> {
 
   void fetchEventsData() async {
     EventService eventService = EventService();
-    var events = await eventService.fetchEvents();
+    // var events = await eventService.fetchEvents();
   }
 
   GestureDetector buildActions(
@@ -33,7 +43,7 @@ class _ActionsWidgetState extends State<ActionsWidget> {
     IconData icon,
     int index,
     Color iconColor,
-    Function() onTap,
+    GlobalKey targetKey,
   ) {
     return GestureDetector(
       onTap: () async {
@@ -42,7 +52,11 @@ class _ActionsWidgetState extends State<ActionsWidget> {
             selectedIndex = -1; // deselect
           } else {
             selectedIndex = index;
-            onTap();
+            Scrollable.ensureVisible(
+              targetKey.currentContext!,
+              duration: Duration(seconds: 1),
+              curve: Curves.easeInOut,
+            );
           }
         });
       },
@@ -120,28 +134,28 @@ class _ActionsWidgetState extends State<ActionsWidget> {
           Icons.cloud,
           1,
           FlutterFlowTheme.of(context).warning,
-          () {},
+          widget.weatherKey,
         ),
         buildActions(
           'Traffic',
           Icons.directions_car,
           2,
           FlutterFlowTheme.of(context).primary,
-          fetchEventsData,
+          widget.trafficKey,
         ),
         buildActions(
           'Ski',
           Icons.downhill_skiing,
           3,
           FlutterFlowTheme.of(context).secondary,
-          () {},
+          widget.skiAreaKey,
         ),
         buildActions(
           'For You',
           Icons.auto_awesome_sharp,
           4,
           Color(0xFF2EE407),
-          () {},
+          widget.pickedForYouKey,
         ),
       ],
     );
