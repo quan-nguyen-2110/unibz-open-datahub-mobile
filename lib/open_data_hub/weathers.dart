@@ -4,34 +4,43 @@ import 'package:http/http.dart' as http;
 class Weather {
   final String? shortDesc;
   final String accessoryRec;
-  final String travelRec;
+  final String clothesRec;
+  final String activitiesRec;
   final String alerts;
 
   final String? windSpeed;
   final String? temperature;
   final String? humidity;
+  final String? vsibility;
+  final String? sunshineDuration;
 
   Weather({
     required this.shortDesc,
     required this.accessoryRec,
-    required this.travelRec,
+    required this.clothesRec,
+    required this.activitiesRec,
     required this.alerts,
 
     required this.windSpeed,
     required this.temperature,
     required this.humidity,
+    required this.vsibility,
+    required this.sunshineDuration,
   });
 
   factory Weather.fromJson(Map<String, dynamic> json) {
     return Weather(
       shortDesc: json['aiAnalysis']?['shortDes'],
       accessoryRec: json['aiAnalysis']?['accessoryRec'] ?? '-',
-      travelRec: json['aiAnalysis']?['travelRec'] ?? '',
+      clothesRec: json['aiAnalysis']?['clothesRec'] ?? '',
+      activitiesRec: json['aiAnalysis']?['activitiesRec'] ?? '',
       alerts: json['aiAnalysis']?['alerts'] ?? '',
 
       windSpeed: json['data']?['ff'],
       temperature: json['data']?['t'],
       humidity: json['data']?['rh'],
+      vsibility: json['data']?['visibility'],
+      sunshineDuration: json['data']?['sd'],
     );
   }
 }

@@ -561,20 +561,48 @@ class _PickedForYouWidgetState extends State<PickedForYouWidget> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            Text(
-              'Picked for You',
-              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                font: GoogleFonts.readexPro(
-                  fontWeight: FontWeight.w500,
-                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+            Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Picked for You',
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                    font: GoogleFonts.readexPro(
+                      fontWeight: FontWeight.w500,
+                      fontStyle: FlutterFlowTheme.of(
+                        context,
+                      ).bodyMedium.fontStyle,
+                    ),
+                    color: FlutterFlowTheme.of(context).primaryBackground,
+                    fontSize: 20,
+                    letterSpacing: 0.0,
+                    fontWeight: FontWeight.w500,
+                    fontStyle: FlutterFlowTheme.of(
+                      context,
+                    ).bodyMedium.fontStyle,
+                  ),
                 ),
-                color: FlutterFlowTheme.of(context).primaryBackground,
-                fontSize: 20.0,
-                letterSpacing: 0.0,
-                fontWeight: FontWeight.w500,
-                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                lineHeight: 3.0,
-              ),
+                Text(
+                  '(Comming soon)',
+                  textAlign: TextAlign.start,
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                    font: GoogleFonts.readexPro(
+                      fontWeight: FontWeight.normal,
+                      fontStyle: FlutterFlowTheme.of(
+                        context,
+                      ).bodyMedium.fontStyle,
+                    ),
+                    color: FlutterFlowTheme.of(context).secondaryText,
+                    fontSize: 12,
+                    letterSpacing: 0.0,
+                    fontWeight: FontWeight.normal,
+                    fontStyle: FlutterFlowTheme.of(
+                      context,
+                    ).bodyMedium.fontStyle,
+                  ),
+                ),
+              ],
             ),
             FFButtonWidget(
               onPressed: () {
@@ -582,9 +610,9 @@ class _PickedForYouWidgetState extends State<PickedForYouWidget> {
               },
               text: 'See All',
               options: FFButtonOptions(
-                height: 40.0,
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                height: 40,
+                padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+                iconPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                 color: FlutterFlowTheme.of(context).primaryText,
                 textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                   font: GoogleFonts.readexPro(
@@ -602,8 +630,8 @@ class _PickedForYouWidgetState extends State<PickedForYouWidget> {
                   ).titleSmall.fontWeight,
                   fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
                 ),
-                elevation: 0.0,
-                borderRadius: BorderRadius.circular(8.0),
+                elevation: 0,
+                borderRadius: BorderRadius.circular(8),
               ),
             ),
           ],

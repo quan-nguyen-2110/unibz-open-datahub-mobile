@@ -65,13 +65,10 @@ class _MenuWidgetState extends State<MenuWidget> {
         indicatorColor: FlutterFlowTheme.of(context).primary,
         tabs: [
           Tab(icon: Icon(Icons.home_outlined, size: 30.0), text: 'Home'),
-          Tab(icon: Icon(Icons.event, size: 30.0), text: 'Events'),
-          Tab(icon: Icon(Icons.traffic, size: 30.0), text: 'Traffic'),
-          Tab(
-            icon: Icon(Icons.water_drop_outlined, size: 30.0),
-            text: 'Weather',
-          ),
-          Tab(icon: Icon(Icons.person_outline, size: 30.0), text: 'Profile'),
+          Tab(icon: Icon(Icons.event, size: 30.0), text: '...'),
+          Tab(icon: Icon(Icons.traffic, size: 30.0), text: '...'),
+          Tab(icon: Icon(Icons.water_drop_outlined, size: 30.0), text: '...'),
+          Tab(icon: Icon(Icons.person_outline, size: 30.0), text: '...'),
         ],
         controller: widget.tabBarController,
         onTap: (i) async {

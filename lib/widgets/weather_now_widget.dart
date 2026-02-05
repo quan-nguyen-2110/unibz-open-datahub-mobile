@@ -334,10 +334,10 @@ class _WeatherNowWidgetState extends State<WeatherNowWidget> {
                                 shape: BoxShape.circle,
                               ),
                               child: Icon(
-                                temp >= 10
+                                temp >= 0
                                     ? Icons.sunny
-                                    : temp > 0
-                                    ? Icons.sunny_snowing
+                                    // : temp > 0
+                                    // ? Icons.sunny_snowing
                                     : Icons.snowing,
                                 color: FlutterFlowTheme.of(context).warning,
                                 size: 40.0,
@@ -365,30 +365,31 @@ class _WeatherNowWidgetState extends State<WeatherNowWidget> {
                         ),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Icon(
-                              Icons.water_drop_outlined,
-                              color: FlutterFlowTheme.of(context).secondary,
-                              size: 24.0,
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                valueOrDefault<double>(
-                                  MediaQuery.sizeOf(context).width <
-                                          kBreakpointSmall
-                                      ? 5.0
-                                      : 5.0,
-                                  0.0,
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Icon(
+                                  Icons.water_drop_outlined,
+                                  color: FlutterFlowTheme.of(context).secondary,
+                                  size: 20,
                                 ),
-                                0.0,
-                                0.0,
-                                0.0,
-                              ),
-                              child: Text(
-                                '${weather?.humidity ?? '--'} rH',
-                                style: FlutterFlowTheme.of(context).bodyMedium
-                                    .override(
-                                      font: GoogleFonts.readexPro(
+                                Text(
+                                  '${weather?.humidity ?? '--'} rH',
+                                  style: FlutterFlowTheme.of(context).bodyMedium
+                                      .override(
+                                        font: GoogleFonts.readexPro(
+                                          fontWeight: FlutterFlowTheme.of(
+                                            context,
+                                          ).bodyMedium.fontWeight,
+                                          fontStyle: FlutterFlowTheme.of(
+                                            context,
+                                          ).bodyMedium.fontStyle,
+                                        ),
+                                        color: Color(0xFF94A3B8),
+                                        fontSize: 16.0,
+                                        letterSpacing: 0.0,
                                         fontWeight: FlutterFlowTheme.of(
                                           context,
                                         ).bodyMedium.fontWeight,
@@ -396,55 +397,32 @@ class _WeatherNowWidgetState extends State<WeatherNowWidget> {
                                           context,
                                         ).bodyMedium.fontStyle,
                                       ),
-                                      color: Color(0xFF94A3B8),
-                                      fontSize: 16.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(
-                                        context,
-                                      ).bodyMedium.fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(
-                                        context,
-                                      ).bodyMedium.fontStyle,
-                                    ),
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                valueOrDefault<double>(
-                                  MediaQuery.sizeOf(context).width <
-                                          kBreakpointSmall
-                                      ? 20.0
-                                      : 20.0,
-                                  0.0,
                                 ),
-                                0.0,
-                                0.0,
-                                0.0,
-                              ),
-                              child: Icon(
-                                Icons.air,
-                                color: FlutterFlowTheme.of(context).primary,
-                                size: 24.0,
-                              ),
+                              ],
                             ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                valueOrDefault<double>(
-                                  MediaQuery.sizeOf(context).width <
-                                          kBreakpointSmall
-                                      ? 5.0
-                                      : 5.0,
-                                  0.0,
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Icon(
+                                  Icons.air,
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  size: 20.0,
                                 ),
-                                0.0,
-                                0.0,
-                                0.0,
-                              ),
-                              child: Text(
-                                '${weather?.windSpeed ?? '--'} km/h',
-                                style: FlutterFlowTheme.of(context).bodyMedium
-                                    .override(
-                                      font: GoogleFonts.readexPro(
+                                Text(
+                                  '${weather?.windSpeed ?? '--'} km/h',
+                                  style: FlutterFlowTheme.of(context).bodyMedium
+                                      .override(
+                                        font: GoogleFonts.readexPro(
+                                          fontWeight: FlutterFlowTheme.of(
+                                            context,
+                                          ).bodyMedium.fontWeight,
+                                          fontStyle: FlutterFlowTheme.of(
+                                            context,
+                                          ).bodyMedium.fontStyle,
+                                        ),
+                                        color: Color(0xFF94A3B8),
+                                        fontSize: 16.0,
+                                        letterSpacing: 0.0,
                                         fontWeight: FlutterFlowTheme.of(
                                           context,
                                         ).bodyMedium.fontWeight,
@@ -452,17 +430,76 @@ class _WeatherNowWidgetState extends State<WeatherNowWidget> {
                                           context,
                                         ).bodyMedium.fontStyle,
                                       ),
-                                      color: Color(0xFF94A3B8),
-                                      fontSize: 16.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(
-                                        context,
-                                      ).bodyMedium.fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(
-                                        context,
-                                      ).bodyMedium.fontStyle,
-                                    ),
-                              ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Icon(
+                                  Icons.remove_red_eye,
+                                  color: FlutterFlowTheme.of(
+                                    context,
+                                  ).primaryBackground,
+                                  size: 20,
+                                ),
+                                Text(
+                                  '${weather.vsibility ?? '--'} km',
+                                  style: FlutterFlowTheme.of(context).bodyMedium
+                                      .override(
+                                        font: GoogleFonts.readexPro(
+                                          fontWeight: FlutterFlowTheme.of(
+                                            context,
+                                          ).bodyMedium.fontWeight,
+                                          fontStyle: FlutterFlowTheme.of(
+                                            context,
+                                          ).bodyMedium.fontStyle,
+                                        ),
+                                        color: Color(0xFF94A3B8),
+                                        fontSize: 16,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FlutterFlowTheme.of(
+                                          context,
+                                        ).bodyMedium.fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(
+                                          context,
+                                        ).bodyMedium.fontStyle,
+                                      ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Icon(
+                                  Icons.sunny,
+                                  color: FlutterFlowTheme.of(context).warning,
+                                  size: 20,
+                                ),
+                                Text(
+                                  '${weather.sunshineDuration ?? '--'} h',
+                                  style: FlutterFlowTheme.of(context).bodyMedium
+                                      .override(
+                                        font: GoogleFonts.readexPro(
+                                          fontWeight: FlutterFlowTheme.of(
+                                            context,
+                                          ).bodyMedium.fontWeight,
+                                          fontStyle: FlutterFlowTheme.of(
+                                            context,
+                                          ).bodyMedium.fontStyle,
+                                        ),
+                                        color: Color(0xFF94A3B8),
+                                        fontSize: 16,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FlutterFlowTheme.of(
+                                          context,
+                                        ).bodyMedium.fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(
+                                          context,
+                                        ).bodyMedium.fontStyle,
+                                      ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
@@ -472,26 +509,26 @@ class _WeatherNowWidgetState extends State<WeatherNowWidget> {
                       ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
-                          0.0,
+                          0,
                           valueOrDefault<double>(
                             MediaQuery.sizeOf(context).width < kBreakpointSmall
-                                ? 15.0
-                                : 15.0,
+                                ? 10.0
+                                : 10.0,
                             0.0,
                           ),
-                          0.0,
-                          0.0,
+                          0,
+                          0,
                         ),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Align(
-                              alignment: AlignmentDirectional(1.0, 0.0),
+                              alignment: AlignmentDirectional(1, 0),
                               child: Container(
-                                width: 30.0,
-                                height: 30.0,
+                                width: 30,
+                                height: 30,
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.of(context).accent1,
                                   shape: BoxShape.circle,
@@ -502,53 +539,195 @@ class _WeatherNowWidgetState extends State<WeatherNowWidget> {
                                 child: Icon(
                                   Icons.person_2,
                                   color: FlutterFlowTheme.of(context).primary,
-                                  size: 17.0,
+                                  size: 17,
                                 ),
                               ),
                             ),
-                            Flexible(
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                  valueOrDefault<double>(
-                                    MediaQuery.sizeOf(context).width <
-                                            kBreakpointSmall
-                                        ? 15.0
-                                        : 15.0,
-                                    0.0,
-                                  ),
-                                  0.0,
-                                  0.0,
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                valueOrDefault<double>(
+                                  MediaQuery.sizeOf(context).width <
+                                          kBreakpointSmall
+                                      ? 10.0
+                                      : 10.0,
                                   0.0,
                                 ),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'AI Suggestion',
+                                0,
+                                0,
+                                0,
+                              ),
+                              child: Text(
+                                'AI Suggestion',
+                                style: FlutterFlowTheme.of(context).bodyMedium
+                                    .override(
+                                      font: GoogleFonts.readexPro(
+                                        fontWeight: FontWeight.w600,
+                                        fontStyle: FlutterFlowTheme.of(
+                                          context,
+                                        ).bodyMedium.fontStyle,
+                                      ),
+                                      color: FlutterFlowTheme.of(
+                                        context,
+                                      ).primaryBackground,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w600,
+                                      fontStyle: FlutterFlowTheme.of(
+                                        context,
+                                      ).bodyMedium.fontStyle,
+                                    ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                          0,
+                          valueOrDefault<double>(
+                            MediaQuery.sizeOf(context).width < kBreakpointSmall
+                                ? 5.0
+                                : 5.0,
+                            0.0,
+                          ),
+                          0,
+                          0,
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                0,
+                                valueOrDefault<double>(
+                                  MediaQuery.sizeOf(context).width <
+                                          kBreakpointSmall
+                                      ? 10.0
+                                      : 10.0,
+                                  0.0,
+                                ),
+                                0,
+                                0,
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 0.2,
+                                    decoration: BoxDecoration(),
+                                    child: Text(
+                                      'Clothers',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
                                             font: GoogleFonts.readexPro(
-                                              fontWeight: FontWeight.w600,
+                                              fontWeight: FlutterFlowTheme.of(
+                                                context,
+                                              ).bodyMedium.fontWeight,
                                               fontStyle: FlutterFlowTheme.of(
                                                 context,
                                               ).bodyMedium.fontStyle,
                                             ),
                                             color: FlutterFlowTheme.of(
                                               context,
-                                            ).secondaryText,
+                                            ).primaryBackground,
                                             letterSpacing: 0.0,
-                                            fontWeight: FontWeight.w600,
+                                            fontWeight: FlutterFlowTheme.of(
+                                              context,
+                                            ).bodyMedium.fontWeight,
                                             fontStyle: FlutterFlowTheme.of(
                                               context,
                                             ).bodyMedium.fontStyle,
                                           ),
                                     ),
-                                    Padding(
+                                  ),
+                                  Flexible(
+                                    child: Text(
+                                      weather.clothesRec.isNotEmpty
+                                          ? weather.clothesRec
+                                          : 'No recommendation available.',
+                                      textAlign: TextAlign.start,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            font: GoogleFonts.readexPro(
+                                              fontWeight: FlutterFlowTheme.of(
+                                                context,
+                                              ).bodyMedium.fontWeight,
+                                              fontStyle: FlutterFlowTheme.of(
+                                                context,
+                                              ).bodyMedium.fontStyle,
+                                            ),
+                                            color: Color(0xFF94A3B8),
+                                            fontSize: 14,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FlutterFlowTheme.of(
+                                              context,
+                                            ).bodyMedium.fontWeight,
+                                            fontStyle: FlutterFlowTheme.of(
+                                              context,
+                                            ).bodyMedium.fontStyle,
+                                          ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                0,
+                                valueOrDefault<double>(
+                                  MediaQuery.sizeOf(context).width <
+                                          kBreakpointSmall
+                                      ? 10.0
+                                      : 10.0,
+                                  0.0,
+                                ),
+                                0,
+                                0,
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 0.2,
+                                    decoration: BoxDecoration(),
+                                    child: Text(
+                                      'Activities',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            font: GoogleFonts.readexPro(
+                                              fontWeight: FlutterFlowTheme.of(
+                                                context,
+                                              ).bodyMedium.fontWeight,
+                                              fontStyle: FlutterFlowTheme.of(
+                                                context,
+                                              ).bodyMedium.fontStyle,
+                                            ),
+                                            color: FlutterFlowTheme.of(
+                                              context,
+                                            ).primaryBackground,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FlutterFlowTheme.of(
+                                              context,
+                                            ).bodyMedium.fontWeight,
+                                            fontStyle: FlutterFlowTheme.of(
+                                              context,
+                                            ).bodyMedium.fontStyle,
+                                          ),
+                                    ),
+                                  ),
+                                  Flexible(
+                                    child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0,
+                                        0,
                                         valueOrDefault<double>(
                                           MediaQuery.sizeOf(context).width <
                                                   kBreakpointSmall
@@ -556,11 +735,14 @@ class _WeatherNowWidgetState extends State<WeatherNowWidget> {
                                               : 5.0,
                                           0.0,
                                         ),
-                                        0.0,
-                                        0.0,
+                                        0,
+                                        0,
                                       ),
                                       child: Text(
-                                        weather?.travelRec ?? '--',
+                                        weather.activitiesRec.isNotEmpty
+                                            ? weather.activitiesRec
+                                            : 'No recommendation available.',
+                                        textAlign: TextAlign.start,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -572,10 +754,8 @@ class _WeatherNowWidgetState extends State<WeatherNowWidget> {
                                                   context,
                                                 ).bodyMedium.fontStyle,
                                               ),
-                                              color: FlutterFlowTheme.of(
-                                                context,
-                                              ).primaryBackground,
-                                              fontSize: 14.0,
+                                              color: Color(0xFF94A3B8),
+                                              fontSize: 14,
                                               letterSpacing: 0.0,
                                               fontWeight: FlutterFlowTheme.of(
                                                 context,
@@ -586,8 +766,8 @@ class _WeatherNowWidgetState extends State<WeatherNowWidget> {
                                             ),
                                       ),
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                             ),
                           ],

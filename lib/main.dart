@@ -512,8 +512,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                       valueOrDefault<double>(
                                         MediaQuery.sizeOf(context).width <
                                                 kBreakpointSmall
-                                            ? 30.0
-                                            : 30.0,
+                                            ? 50.0
+                                            : 50.0,
                                         0.0,
                                       ),
                                       0.0,
