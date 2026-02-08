@@ -11,12 +11,14 @@ class ActionsWidget extends StatefulWidget {
   final GlobalKey trafficKey;
   final GlobalKey skiAreaKey;
   final GlobalKey pickedForYouKey;
+  final GlobalKey gastronomyKey;
   const ActionsWidget({
     super.key,
     required this.weatherKey,
     required this.trafficKey,
     required this.skiAreaKey,
     required this.pickedForYouKey,
+    required this.gastronomyKey,
   });
   @override
   // ignore: library_private_types_in_public_api
@@ -61,7 +63,7 @@ class _ActionsWidgetState extends State<ActionsWidget> {
         });
       },
       child: Container(
-        width: MediaQuery.sizeOf(context).width * 0.2,
+        width: MediaQuery.sizeOf(context).width * 0.17,
         height: 80.0,
         decoration: BoxDecoration(
           color: selectedIndex == index
@@ -156,6 +158,13 @@ class _ActionsWidgetState extends State<ActionsWidget> {
           4,
           Color(0xFF2EE407),
           widget.pickedForYouKey,
+        ),
+        buildActions(
+          'Food',
+          Icons.restaurant,
+          5,
+          Colors.orange,
+          widget.gastronomyKey,
         ),
       ],
     );

@@ -242,7 +242,7 @@ class _PickedForYouWidgetState extends State<PickedForYouWidget> {
                 MediaQuery.sizeOf(context).width < kBreakpointSmall
                     ? 20.0
                     : 20.0,
-                0.0,
+                    0.0,
               ),
               0.0,
               0.0,
@@ -448,7 +448,7 @@ class _PickedForYouWidgetState extends State<PickedForYouWidget> {
                 MediaQuery.sizeOf(context).width < kBreakpointSmall
                     ? 20.0
                     : 20.0,
-                0.0,
+                    0.0,
               ),
             ),
             child: Row(
@@ -469,7 +469,7 @@ class _PickedForYouWidgetState extends State<PickedForYouWidget> {
                         font: GoogleFonts.readexPro(
                           fontWeight: FlutterFlowTheme.of(
                             context,
-                          ).bodyMedium.fontWeight,
+                            ).bodyMedium.fontWeight,
                           fontStyle: FlutterFlowTheme.of(
                             context,
                           ).bodyMedium.fontStyle,

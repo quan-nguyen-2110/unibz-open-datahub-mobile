@@ -4,6 +4,7 @@ import 'package:open_data_hub_mobile_app/widgets/picked_for_you_widget.dart';
 import 'package:open_data_hub_mobile_app/widgets/ski_area_widget.dart';
 import 'package:open_data_hub_mobile_app/widgets/traffic_and_transit_widget.dart';
 import 'package:open_data_hub_mobile_app/widgets/weather_now_widget.dart';
+import 'package:open_data_hub_mobile_app/widgets/gastronomy_widget.dart';
 
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -109,6 +110,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   final GlobalKey trafficKey = GlobalKey();
   final GlobalKey skiAreaKey = GlobalKey();
   final GlobalKey pickedForYouKey = GlobalKey();
+  final GlobalKey gastronomyKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -445,6 +447,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                       trafficKey: trafficKey,
                                       skiAreaKey: skiAreaKey,
                                       pickedForYouKey: pickedForYouKey,
+                                      gastronomyKey: gastronomyKey,
                                     ),
                                   ),
                                   // Weather Now Widget
@@ -521,6 +524,26 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                     ),
                                     child: PickedForYouWidget(
                                       key: pickedForYouKey,
+                                    ),
+                                  ),
+                                  // Gastronomy Widget
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0,
+                                      valueOrDefault<double>(
+                                        MediaQuery.sizeOf(context).width <
+                                                kBreakpointSmall
+                                            ? 50.0
+                                            : 50.0,
+                                        0.0,
+                                      ),
+                                      0.0,
+                                      0.0,
+                                    ),
+                                    child: GastronomyWidget(
+                                      key: gastronomyKey,
+                                      latitude: latitude,
+                                      longitude: longitude,
                                     ),
                                   ),
                                 ],
